@@ -16,6 +16,7 @@ namespace AddressBookSystem
             Console.WriteLine("Address Name:" + contacts.City);
             Console.WriteLine("Phone No:" + contacts.PhoneNumber);
             Console.WriteLine("Zip Code:" + contacts.ZipCode);
+            Console.WriteLine("Email Address:" + contacts.Email);
         }
     }
 }
