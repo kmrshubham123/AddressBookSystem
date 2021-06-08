@@ -18,13 +18,15 @@ namespace AddressBookSystem
             string city = Console.ReadLine();
             Console.WriteLine("Enter State :");
             string state = Console.ReadLine();
-            Console.WriteLine("Enter Email :");
-            string email = Console.ReadLine();
-            Console.WriteLine("Enter Zip :");
+            Console.WriteLine("Enter ZipCode :");
             int zipCode = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Enter Phone Number :");
             long phoneNumber = Convert.ToInt64(Console.ReadLine());
-            addressBook.AddContact(firstName, lastName, address, city, state, zipCode,  phoneNumber, email);
+            Console.WriteLine("Enter Email :");
+            string email = Console.ReadLine();
+            addressBook.AddContact(firstName, lastName, address, city, state, zipCode, phoneNumber, email);
+            addressBook.ViewContact();
+            addressBook.EditContact(firstName);
             addressBook.ViewContact();
         }
     }
