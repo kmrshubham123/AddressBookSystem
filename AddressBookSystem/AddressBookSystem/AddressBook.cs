@@ -7,7 +7,8 @@ namespace AddressBookSystem
     class AddressBook : IContacts
     {
         private Dictionary<string, Contacts> addressBook = new Dictionary<string, Contacts>();
-        public void AddContact(string firstName, string lastName, string address, string city, string state, int zipCode, long phoneNumber, string email)
+        private Dictionary<string, AddressBook> addressBookDictionary = new Dictionary<string, AddressBook>();
+        public void AddContact(string firstName, string lastName, string address, string city, string state, int zipCode, long phoneNumber, string email, string bookName)
         {
             Contacts contact = new Contacts();
             contact.FirstName = firstName;
@@ -19,6 +20,8 @@ namespace AddressBookSystem
             contact.PhoneNumber = phoneNumber;
             contact.Email = email;
             addressBook.Add(contact.FirstName, contact);
+            addressBookDictionary[bookName].addressBook.Add(contact.FirstName, contact);
+            Console.WriteLine("\nAdded Succesfully. \n");
         }
         public void ViewContact(string name)
         {
@@ -51,7 +54,7 @@ namespace AddressBookSystem
                 Console.WriteLine("Email  : " + item.Value.Email );
             }
         }
-        public void EditContact(string name)
+        public void EditContact(string name, string bookName)
         {
             foreach (KeyValuePair<string, Contacts> item in addressBook)
             {
@@ -112,6 +115,16 @@ namespace AddressBookSystem
             {
                 Console.WriteLine("\nNot Found, Try Again.\n");
             }
+        }
+        public void AddAddressBook(string bookName)
+        {
+            AddressBook addressBook = new AddressBook();
+            addressBookDictionary.Add(bookName, addressBook);
+            Console.WriteLine("AddressBook Created.");
+        }
+        public Dictionary<string, AddressBook> GetAddressBook()
+        {
+            return addressBookDictionary;
         }
     }
 
