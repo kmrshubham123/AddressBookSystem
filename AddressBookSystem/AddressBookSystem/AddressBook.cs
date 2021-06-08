@@ -20,6 +20,7 @@ namespace AddressBookSystem
             contact.Email = email;
             addressBook.Add(contact.FirstName, contact);
         }
+       
         public void ViewContact()
         {
             foreach (KeyValuePair<string, Contacts> item in addressBook)
@@ -29,9 +30,9 @@ namespace AddressBookSystem
                 Console.WriteLine("Address : " + item.Value.Address);
                 Console.WriteLine("City : " + item.Value.City);
                 Console.WriteLine("State : " + item.Value.State);
-                Console.WriteLine("ZipCode : " + item.Value.ZipCode);
-                Console.WriteLine("Phone Number : " + item.Value.PhoneNumber);
                 Console.WriteLine("Email : " + item.Value.Email);
+                Console.WriteLine("Zip : " + item.Value.ZipCode);
+                Console.WriteLine("Phone Number : " + item.Value.PhoneNumber + "\n");
             }
         }
         public void EditContact(string name)
@@ -78,8 +79,24 @@ namespace AddressBookSystem
                             break;
 
                     }
+
+                    Console.WriteLine("\nEdited Successfully.\n");
                 }
+            }
+     
+        }
+        public void DeleteContact(string name)
+        {
+            if (addressBook.ContainsKey(name))
+            {
+                addressBook.Remove(name);
+                Console.WriteLine("\nDeleted Succesfully.\n");
+            }
+            else
+            {
+                Console.WriteLine("\nNot Found, Try Again.\n");
             }
         }
     }
+
 }
