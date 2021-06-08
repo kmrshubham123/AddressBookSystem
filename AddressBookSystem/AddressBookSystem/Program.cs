@@ -11,7 +11,7 @@ namespace AddressBookSystem
             int choice;
             do
             {
-                Console.WriteLine("Choose An Option \n1.Add New Contact \n2.Edit Existing Contact \n3.Delete A Contact \n4.Exit Application\n");
+                Console.WriteLine("Choose An Option \n1.Add New Contact \n2.Edit Existing Contact \n3.Delete A Contact \n4.View Multiple Contacts \n5.Exit Application\n");
                 choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
                 {
@@ -45,13 +45,18 @@ namespace AddressBookSystem
                         addressBook.DeleteContact(nameToDelete);
                         break;
                     case 4:
+                        Console.WriteLine("Enter First Name Of Contact To View :");
+                        string nameToView = Console.ReadLine();
+                        addressBook.ViewContact(nameToView);
+                        break;
+                    case 5:
                         Console.WriteLine("Thank You For Using Address Book System.");
                         break;
                     default:
-                        Console.WriteLine( "----Enter Right Choice(1-4)----" );
+                        Console.WriteLine( "----Enter Right Choice(1-5)----" );
                         break;
                 }
-            } while (choice != 4);
+            } while (choice != 5);
           
         }
     }
