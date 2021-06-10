@@ -58,12 +58,12 @@ namespace AddressBookSystem
                     case 3:
                         Console.WriteLine("Enter First Name Of Contact To Delete :");
                         string nameToDelete = Console.ReadLine();                               /// Delete Contacts
-                        addressBook.DeleteContact(nameToDelete);
+                        addressBook.DeleteContact(nameToDelete, bookName);
                         break;
                     case 4:
                         Console.WriteLine("Enter First Name Of Contact To View :");
                         string nameToView = Console.ReadLine();                                ///Contact View
-                        addressBook.ViewContact(nameToView);
+                        addressBook.ViewContact(nameToView, bookName);
                         break;
                     case 5:
                         Console.WriteLine("Enter Name For New AddressBook");
@@ -100,10 +100,10 @@ namespace AddressBookSystem
                         Console.WriteLine("Thank You For Using Address Book System.");
                         break;
                     default:
-                        Console.WriteLine( "----Enter Right Choice(1-4)----" );
+                        Console.WriteLine( "----Enter Right Choice(1-7)----" );
                         break;
                 }
-            } while (choice != 5);
+            } while (choice != 7);
           
         }
     }

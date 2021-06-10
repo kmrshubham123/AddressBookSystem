@@ -23,7 +23,7 @@ namespace AddressBookSystem
             addressBookDictionary[bookName].addressBook.Add(contact.FirstName, contact);
             Console.WriteLine("\nAdded Succesfully. \n");
         }
-        public void ViewContact(string name)
+        public void ViewContact(string name, string bookName)
         {
             foreach (KeyValuePair<string, Contacts> item in addressBook)
             {
@@ -104,7 +104,7 @@ namespace AddressBookSystem
             }
      
         }
-        public void DeleteContact(string name)
+        public void DeleteContact(string name, string bookName)
         {
             if (addressBook.ContainsKey(name))
             {
