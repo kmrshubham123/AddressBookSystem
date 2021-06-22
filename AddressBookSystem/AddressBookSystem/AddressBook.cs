@@ -40,7 +40,7 @@ namespace AddressBookSystem
                 }
             }
         }
-        public void ViewContact()
+        public void ViewContact(string bookname)
         {
             foreach (KeyValuePair<string, Contacts> item in addressBook)
             {
@@ -126,6 +126,7 @@ namespace AddressBookSystem
         {
             return addressBookDictionary;
         }
+       
     }
 
 }

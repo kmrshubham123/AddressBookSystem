@@ -27,7 +27,7 @@ namespace AddressBookSystem
             do
             {
                 Console.WriteLine($"Working On {bookName} AddressBook\n");
-                Console.WriteLine("Choose An Option \n1.Add New Contact \n2.Edit Existing Contact \n3.Delete A Contact \n4.View Multiple Contacts \n5.Add New AddressBook \n6.Switch AddressBook \n7.Exit Application\n");
+                Console.WriteLine("Choose An Option \n1.Add New Contact \n2.Edit Existing Contact \n3.Delete A Contact \n4.View A Contact \n5.View Multiple Contacts \n6.Add New AddressBook \n7.Switch AddressBook \n8.Exit Application\n");
                 choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
                 {
@@ -66,6 +66,9 @@ namespace AddressBookSystem
                         addressBook.ViewContact(nameToView, bookName);
                         break;
                     case 5:
+                        addressBook.ViewContact(bookName);
+                        break;
+                    case 6:
                         Console.WriteLine("Enter Name For New AddressBook");
                         string newAddressBook = Console.ReadLine();
                         addressBook.AddAddressBook(newAddressBook);
@@ -77,7 +80,7 @@ namespace AddressBookSystem
                             bookName = newAddressBook;
                         }
                         break;
-                    case 6:
+                    case 7:
                         Console.WriteLine("Enter Name Of AddressBook From Below List");
                         foreach (KeyValuePair<string, AddressBook> item in addressBook.GetAddressBook())
                         {
@@ -96,14 +99,14 @@ namespace AddressBookSystem
                             }
                         }
                         break;
-                    case 7:
+                    case 8:
                         Console.WriteLine("Thank You For Using Address Book System.");
                         break;
                     default:
-                        Console.WriteLine( "----Enter Right Choice(1-7)----" );
+                        Console.WriteLine( "----Enter Right Choice(1-8)----" );
                         break;
                 }
-            } while (choice != 7);
+            } while (choice != 8);
           
         }
     }
