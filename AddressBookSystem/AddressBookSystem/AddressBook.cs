@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace AddressBookSystem
@@ -10,18 +11,10 @@ namespace AddressBookSystem
         private Dictionary<string, AddressBook> addressBookDictionary = new Dictionary<string, AddressBook>();
         public void AddContact(string firstName, string lastName, string address, string city, string state, int zipCode, long phoneNumber, string email, string bookName)
         {
-            Contacts contact = new Contacts();
-            contact.FirstName = firstName;
-            contact.LastName = lastName;
-            contact.Address = address;
-            contact.City = city;
-            contact.State = state;
-            contact.ZipCode = zipCode;
-            contact.PhoneNumber = phoneNumber;
-            contact.Email = email;
-            addressBook.Add(contact.FirstName, contact);
+            Contacts contact = new Contacts(firstName, lastName, address, city, state, email, zipCode, phoneNumber);
             addressBookDictionary[bookName].addressBook.Add(contact.FirstName, contact);
             Console.WriteLine("\nAdded Succesfully. \n");
+
         }
         public void ViewContact(string name, string bookName)
         {
@@ -54,6 +47,11 @@ namespace AddressBookSystem
                 Console.WriteLine("Email  : " + item.Value.Email );
             }
         }
+        /// <summary>
+        /// Method For Edit Contact
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="bookName"></param>
         public void EditContact(string name, string bookName)
         {
             foreach (KeyValuePair<string, Contacts> item in addressBook)
@@ -98,12 +96,16 @@ namespace AddressBookSystem
                             break;
 
                     }
-
                     Console.WriteLine("\nEdited Successfully.\n");
                 }
             }
      
         }
+        /// <summary>
+        /// Method for Delete Contact
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="bookName"></param>
         public void DeleteContact(string name, string bookName)
         {
             if (addressBook.ContainsKey(name))
@@ -116,6 +118,10 @@ namespace AddressBookSystem
                 Console.WriteLine("\nNot Found, Try Again.\n");
             }
         }
+        /// <summary>
+        /// Method for Add AddressBook
+        /// </summary>
+        /// <param name="bookName"></param>
         public void AddAddressBook(string bookName)
         {
             AddressBook addressBook = new AddressBook();
@@ -126,7 +132,25 @@ namespace AddressBookSystem
         {
             return addressBookDictionary;
         }
-       
+        public List<Contacts> GetListOfDictctionaryKeys(string bookName)
+        {
+            List<Contacts> book = new List<Contacts>();
+            foreach (var value in addressBookDictionary[bookName].addressBook.Values)
+            {
+                book.Add(value);
+            }
+            return book;
+        }
+        public bool CheckDuplicateEntry(Contacts c, string bookName)
+        {
+            List<Contacts> book = GetListOfDictctionaryKeys(bookName);
+            if (book.Any(b => b.Equals(c)))
+            {
+                Console.WriteLine("Name already Exists.");
+                return true;
+            }
+            return false;
+        }
     }
 
 }
