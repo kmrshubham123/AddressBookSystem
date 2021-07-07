@@ -127,10 +127,10 @@ namespace AddressBookSystem
                         Console.WriteLine("Thank You For Using Address Book System.");
                         break;
                     default:
-                        Console.WriteLine( "----Enter Right Choice(1-8)----" );
+                        Console.WriteLine( "----Enter Right Choice(1-9)----" );
                         break;
                 }
-            } while (choice != 8);
+            } while (choice != 9);
           
         }
     }
